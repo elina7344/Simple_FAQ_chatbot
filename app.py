@@ -1,13 +1,32 @@
 # pip install Flask>=1.0.0 chatterbot>=1.0.0 chatterbot-corpus>=1.2.0 SQLAlchemy>=1.2
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
 app = Flask(__name__)
 
+# Creating ChatBot Instance
+chatbot = ChatBot('FAQBot')
+
+conversation = [
+    "What is your name?",
+    "My name is Chatterbot",
+    "How old are you?",
+    "Im as old as sci-fi films"
+]
+momo = [
+    "Momos are clean",
+    "no they are round"
+]
+
+trainer = ListTrainer(chatbot)
+trainer.train(conversation)
+trainer.train(momo)
+
 english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
-trainer = ChatterBotCorpusTrainer(english_bot)
-trainer.train("chatterbot.corpus.english")
+trainer_corpus = ChatterBotCorpusTrainer(english_bot)
+trainer_corpus.train("chatterbot.corpus.english")
 
 
 @app.route("/")
@@ -23,3 +42,4 @@ def get_bot_response():
 
 if __name__ == '__main__':
     app.run()
+
