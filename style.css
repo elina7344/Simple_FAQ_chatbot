@@ -5,15 +5,15 @@ background-color: black;
 }
 h1
 {
-color: black;
 margin-bottom: 0;
 margin-top: 0;
 text-align: center;
+color: white;
 font-size: 40px;
 }
 h3
 {
-color: black;
+color: #009688;
 font-size: 20px;
 margin-top: 3px;
 text-align: center;
