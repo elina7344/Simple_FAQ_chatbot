@@ -15,10 +15,7 @@ conversation = [
     "How old are you?",
     "Im as old as sci-fi films"
 ]
-momo = [
-    "Momos are clean",
-    "no they are round"
-]
+
 
 trainer = ListTrainer(chatbot)
 trainer.train(conversation)
